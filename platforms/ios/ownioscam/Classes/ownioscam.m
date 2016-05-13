@@ -6,20 +6,20 @@
 -(void) openCamera:(CDVInvokedUrlCommand *)command {
     
     
-     [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[NSString stringWithFormat:@"%@/%@", @"file://", @"test"]] callbackId:self.latestCommand.callbackId];
+  //   [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[NSString stringWithFormat:@"%@/%@", @"file://", @"test"]] callbackId:self.latestCommand.callbackId];
     
     // Set the hasPendingOperation field to prevent the webview from crashing
-  //  self.hasPendingOperation = YES;
+    self.hasPendingOperation = YES;
     
     // Save the CDVInvokedUrlCommand as a property.  We will need it later.
-  //  self.latestCommand = command;
+    self.latestCommand = command;
    / 
     // Make the overlay view controller.
- //   self.overlay = [[ownioscamController alloc] initWithNibName:@"ownioscamController" bundle:nil];
-  //  self.overlay.plugin = self;
+   self.overlay = [[ownioscamController alloc] initWithNibName:@"ownioscamController" bundle:nil];
+    self.overlay.plugin = self;
     
     // Display the view.  This will "slide up" a modal view from the bottom of the screen.
-   // [self.viewController presentViewController:self.overlay.picker animated:YES completion:nil];
+    [self.viewController presentViewController:self.overlay.picker animated:YES completion:nil];
 }
 
 // Method called by the overlay when the image is ready to be sent back to the web view
